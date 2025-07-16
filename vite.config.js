@@ -11,6 +11,9 @@ import rehypeImgSize from 'rehype-img-size';
 import rehypeSlug from 'rehype-slug';
 import rehypePrism from '@mapbox/rehype-prism';
 
+const isDev = process.env.NODE_ENV !== 'production';
+const isVercel = Boolean(process.env.VERCEL);
+
 export default defineConfig({
   assetsInclude: ['**/*.glb', '**/*.hdr', '**/*.glsl'],
   build: {
@@ -20,19 +23,30 @@ export default defineConfig({
     port: 7777,
   },
   plugins: [
+    // MDX + remark/rehype
     mdx({
-      rehypePlugins: [[rehypeImgSize, { dir: 'public' }], rehypeSlug, rehypePrism],
+      rehypePlugins: [
+        [rehypeImgSize, { dir: 'public' }],
+        rehypeSlug,
+        rehypePrism,
+      ],
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
       providerImportSource: '@mdx-js/react',
     }),
-    remixCloudflareDevProxy(),
+
+    // Sólo en dev local, nunca en Vercel
+    isDev && remixCloudflareDevProxy(),
+
+    // Plugin principal de Remix
     remix({
       routes(defineRoutes) {
-        return defineRoutes(route => {
+        return defineRoutes((route) => {
           route('/', 'routes/home/route.js', { index: true });
         });
       },
     }),
+
+    // Resuelve alias de paths desde jsconfig.json/tsconfig.json
     jsconfigPaths(),
-  ],
+  ].filter(Boolean), // eliminamos los “falsy” para no tener slots vacíos
 });
