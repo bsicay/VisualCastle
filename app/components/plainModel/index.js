@@ -1,0 +1,1 @@
+export { PlainModel } from './plainModel';
