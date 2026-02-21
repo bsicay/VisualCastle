@@ -30,6 +30,10 @@ export function ProjectSummary({
   buttonText,
   buttonLink,
   alternate,
+  backgroundVideo,
+  backgroundGif,
+  backgroundPoster,
+  backgroundOpacity = 0.6,
   // views = [], 
   ...rest
 }) {
@@ -44,7 +48,7 @@ export function ProjectSummary({
   const indexText = index < 10 ? `0${index}` : index;
   const phoneSizes = `(max-width: ${media.tablet}px) 30vw, 20vw`;
   const laptopSizes = `(max-width: ${media.tablet}px) 80vw, 40vw`;
-  const [selected, setSelected] = useState(0);
+  const hasBackgroundMedia = Boolean(backgroundVideo || backgroundGif);
 
   function handleModelLoad() {
     setModelLoaded(true);
@@ -68,18 +72,20 @@ export function ProjectSummary({
 
   function renderDetails(visible) {
     return (
-      <div className={styles.details}>
-        <div aria-hidden className={styles.index}>
-          <Divider
-            notchWidth="64px"
-            notchHeight="8px"
-            collapsed={!visible}
-            collapseDelay={1000}
-          />
-          <span className={styles.indexNumber} data-visible={visible}>
-            {indexText}
-          </span>
-        </div>
+      <div className={styles.details} data-background={hasBackgroundMedia}>
+        {!hasBackgroundMedia && (
+          <div aria-hidden className={styles.index}>
+            <Divider
+              notchWidth="64px"
+              notchHeight="8px"
+              collapsed={!visible}
+              collapseDelay={1000}
+            />
+            <span className={styles.indexNumber} data-visible={visible}>
+              {indexText}
+            </span>
+          </div>
+        )}
         <Heading
           level={3}
           as="h2"
@@ -97,6 +103,35 @@ export function ProjectSummary({
             {buttonText}
           </Button>
         </div> */}
+      </div>
+    );
+  }
+
+  function renderBackgroundMedia() {
+    if (!hasBackgroundMedia) return null;
+
+    return (
+      <div
+        className={styles.background}
+        style={{ '--overlay': backgroundOpacity }}
+        aria-hidden
+      >
+        {backgroundVideo && (
+          <video
+            className={styles.backgroundMedia}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={backgroundPoster}
+          >
+            <source src={backgroundVideo} type="video/mp4" />
+          </video>
+        )}
+        {!backgroundVideo && backgroundGif && (
+          <img className={styles.backgroundMedia} src={backgroundGif} alt="" />
+        )}
       </div>
     );
   }
@@ -180,6 +215,7 @@ export function ProjectSummary({
   return (
     <Section
       className={styles.summary}
+      data-background={hasBackgroundMedia}
       data-alternate={alternate}
       data-first={index === 1}
       onFocus={() => setFocused(true)}
@@ -191,23 +227,24 @@ export function ProjectSummary({
       tabIndex={-1}
       {...rest}
     >
-
+      {renderBackgroundMedia()}
       <div className={styles.content}>
         <Transition in={sectionVisible || focused}>
           {({ visible }) => (
             <>
-              {!alternate && !isMobile && (
+              {!hasBackgroundMedia && !alternate && !isMobile && (
                 <>
                   {renderDetails(visible)}
                   {renderPreview(visible)}
                 </>
               )}
-              {(alternate || isMobile) && (
+              {!hasBackgroundMedia && (alternate || isMobile) && (
                 <>
                   {renderPreview(visible)}
                   {renderDetails(visible)}
                 </>
               )}
+              {hasBackgroundMedia && renderDetails(visible)}
             </>
           )}
         </Transition>

@@ -10,6 +10,7 @@ import sliceTexture from '~/assets/slice-app.jpg';
 import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
 import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
+import sprMotionVideo from '~/assets/visual_record.mp4';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -53,10 +54,10 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
-  const details = useRef();
+
 
   useEffect(() => {
-    const sections = [intro, projectOne, details];
+    const sections = [intro, projectOne];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -141,6 +142,9 @@ export const Home = () => {
         description="Somos una empresa comprometida en desarrollar todas las estrategias visuales, para empresas y profesionales en cada una de las especializaciones, con la finalidad de que puedan dar a conocer sus productos o servicios al máximo número de usuarios."
         buttonText="View project"
         buttonLink="/projects/smart-sparrow"
+        backgroundVideo={sprMotionVideo}
+        backgroundPoster={sprTexturePlaceholder}
+        backgroundOpacity={0.10}
         model={{
           type: 'laptop',
           alt: 'Smart Sparrow lesson builder',
@@ -200,11 +204,7 @@ export const Home = () => {
         }}
         // views={project2Views}
       /> */}
-      <Profile
-        sectionRef={details}
-        visible={visibleSections.includes(details.current)}
-        id="details"
-      />
+  
       <Footer />
 
         {/* <CastleView /> */}

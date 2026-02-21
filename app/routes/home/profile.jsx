@@ -69,15 +69,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   About me
                 </div> */}
               </div>
-          <iframe 
-            width="130%" 
-            height="640" 
-            frameBorder="0" 
-            allow="xr-spatial-tracking; gyroscope; accelerometer" 
-            allowFullScreen 
-            scrolling="no" 
-            src="https://kuula.co/share/collection/7FvP6?logo=1&info=0&fs=1&vr=1&sd=1&initload=0&thumbs=1"
-          ></iframe>
+    
               <div className={styles.image}>
                 <svg className={styles.svg} data-visible={visible} viewBox="0 0 136 766">
                   <use href={`${katakana}#katakana-profile`} />
