@@ -144,7 +144,7 @@ export const Home = () => {
         buttonLink="/projects/smart-sparrow"
         backgroundVideo={sprMotionVideo}
         backgroundPoster={sprTexturePlaceholder}
-        backgroundOpacity={0.10}
+        backgroundOpacity={0.70}
         model={{
           type: 'laptop',
           alt: 'Smart Sparrow lesson builder',
