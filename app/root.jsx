@@ -10,6 +10,9 @@ import {
   useRouteError,
 } from '@remix-run/react';
 import { createCookieSessionStorage, json } from '@remix-run/cloudflare';
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/montserrat/700.css';
 import { ThemeProvider, themeStyles } from '~/components/theme-provider';
 import { useEffect } from 'react';
 import { Error } from '~/layouts/error';
@@ -22,12 +25,6 @@ import './reset.module.css';
 import './global.module.css';
 
 export const links = () => [
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: '' },
-  {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap',
-  },
   { rel: 'manifest', href: '/manifest.json' },
   { rel: 'icon', href: '/favicon.ico' },
   { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
