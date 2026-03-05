@@ -1,0 +1,287 @@
+.section {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.leftImage {
+  position: absolute;
+  left: -8%;
+  top: -8%;
+  width: min(66vw, 980px);
+  height: 150%;
+  background-image: var(--leftVisual);
+  background-size: cover;
+  background-position: center left;
+  opacity: 0.42;
+  pointer-events: none;
+  z-index: 0;
+  animation: leftImageIn 1.2s var(--bezierFastoutSlowin) both;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.85) 34%,
+    rgba(0, 0, 0, 0.38) 68%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.85) 34%,
+    rgba(0, 0, 0, 0.38) 68%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.contentWrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content {
+  width: min(660px, 48vw);
+  display: grid;
+  gap: var(--spaceL);
+  animation: contentIn 0.9s var(--bezierFastoutSlowin) both;
+}
+
+.hero {
+  display: grid;
+  gap: 2px;
+}
+
+.titleTop {
+  margin: 0;
+  text-align: right;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: var(--fontWeightMedium);
+  line-height: 1.16;
+  color: var(--text);
+}
+
+.titleBottom {
+  margin: 0;
+  margin-right: clamp(18px, 3vw, 56px);
+  text-align: right;
+  font-size: clamp(2rem, 4.1vw, 4rem);
+  font-weight: var(--fontWeightMedium);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--textTitle);
+}
+
+.copy {
+  display: grid;
+  gap: 6px;
+}
+
+.copy p {
+  margin: 0;
+  text-align: left;
+  color: color-mix(in lab, var(--text) 82%, transparent);
+  font-size: clamp(1rem, 1.2vw, 1.18rem);
+  line-height: 1.5;
+}
+
+.processBlock {
+  margin-top: 5%;
+  display: grid;
+  text-align: center;
+  gap: var(--spaceM);
+}
+
+.processTitle {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: clamp(1.08rem, 1.5vw, 1.4rem);
+  color: var(--textTitle);
+}
+
+.growthGraph {
+  position: relative;
+  min-height: 268px;
+  border-radius: 14px;
+  padding: 14px;
+  background: color-mix(in lab, var(--background) 78%, transparent);
+  border: 1px solid color-mix(in lab, var(--text) 14%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.graphLine {
+  position: absolute;
+  inset: 14px;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  color: color-mix(in lab, var(--textTitle) 80%, transparent);
+}
+
+.path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 460;
+  stroke-dashoffset: 460;
+  animation: drawPath 1.6s var(--bezierFastoutSlowin) 260ms forwards;
+}
+
+.phaseList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  inset: 14px;
+}
+
+.phase {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translate3d(0, 8px, 0);
+  animation: fadeNode 500ms ease forwards;
+  animation-delay: calc(540ms + (var(--i) * 140ms));
+}
+
+.phase:nth-child(1) {
+  left: 18px;
+  bottom: 22px;
+}
+
+.phase:nth-child(2) {
+  left: 74px;
+  bottom: 78px;
+}
+
+.phase:nth-child(3) {
+  left: 142px;
+  bottom: 122px;
+}
+
+.phase:nth-child(4) {
+  left: 216px;
+  bottom: 166px;
+}
+
+.phase:nth-child(5) {
+  left: 284px;
+  bottom: 206px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--textTitle);
+  box-shadow: 0 0 0 0 color-mix(in lab, var(--textTitle) 45%, transparent);
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+.phaseLabel {
+  font-size: 0.92rem;
+  color: color-mix(in lab, var(--text) 88%, transparent);
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+@keyframes leftImageIn {
+  from {
+    opacity: 0;
+    transform: translate3d(-28px, 0, 0);
+  }
+
+  to {
+    opacity: 0.42;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes contentIn {
+  from {
+    opacity: 0;
+    transform: translate3d(18px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeNode {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes pulseDot {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in lab, var(--textTitle) 30%, transparent);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px color-mix(in lab, var(--textTitle) 0%, transparent);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in lab, var(--textTitle) 0%, transparent);
+  }
+}
+
+@media (--mediaTablet) {
+  .content {
+    width: min(680px, 100%);
+  }
+
+  .leftImage {
+    width: 86vw;
+    opacity: 0.34;
+  }
+}
+
+@media (--mediaMobile) {
+  .section {
+    padding-top: var(--space3XL);
+    padding-bottom: var(--space3XL);
+  }
+
+  .leftImage {
+    width: 120vw;
+    left: -26%;
+    opacity: 0.24;
+  }
+
+  .content {
+    width: 100%;
+    gap: var(--spaceM);
+  }
+
+  .titleTop,
+  .titleBottom {
+    text-align: left;
+    margin-right: 0;
+  }
+
+  .growthGraph {
+    min-height: 312px;
+  }
+
+  .phaseLabel {
+    font-size: 0.86rem;
+  }
+}

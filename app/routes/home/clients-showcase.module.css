@@ -1,0 +1,89 @@
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  max-width: var(--maxWidthL);
+  display: grid;
+  gap: clamp(26px, 4vh, 44px);
+}
+
+.title {
+  margin: 0;
+  text-align: left;
+  color: var(--textTitle);
+  font-size: clamp(1.8rem, 3.4vw, 3.3rem);
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  animation: fadeUp 0.8s var(--bezierFastoutSlowin) both;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+
+.logoSlot {
+  min-height: clamp(110px, 16vh, 170px);
+  display: grid;
+  place-items: center;
+  animation: fadeUp 0.8s var(--bezierFastoutSlowin) both;
+}
+
+.logoImage {
+  width: clamp(170px, 18vw, 280px);
+  max-width: 96%;
+  max-height: 130px;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.1);
+  opacity: 0.9;
+}
+
+.logoSlot:nth-child(2) {
+  animation-delay: 60ms;
+}
+
+.logoSlot:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+.logoSlot:nth-child(4) {
+  animation-delay: 180ms;
+}
+
+.logoSlot:nth-child(5) {
+  animation-delay: 240ms;
+}
+
+.logoSlot:nth-child(6) {
+  animation-delay: 300ms;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (--mediaTablet) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (--mediaMobile) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

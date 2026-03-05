@@ -71,6 +71,8 @@ export function ProjectSummary({
   }
 
   function renderDetails(visible) {
+    const detailsVisible = visible || hasBackgroundMedia;
+
     return (
       <div className={styles.details} data-background={hasBackgroundMedia}>
         {!hasBackgroundMedia && (
@@ -78,10 +80,10 @@ export function ProjectSummary({
             <Divider
               notchWidth="64px"
               notchHeight="8px"
-              collapsed={!visible}
+              collapsed={!detailsVisible}
               collapseDelay={1000}
             />
-            <span className={styles.indexNumber} data-visible={visible}>
+            <span className={styles.indexNumber} data-visible={detailsVisible}>
               {indexText}
             </span>
           </div>
@@ -90,12 +92,12 @@ export function ProjectSummary({
           level={3}
           as="h2"
           className={styles.title}
-          data-visible={visible}
+          data-visible={detailsVisible}
           id={titleId}
         >
           {title}
         </Heading>
-        <Text className={styles.description} data-visible={visible} as="p">
+        <Text className={styles.description} data-visible={detailsVisible} as="p">
           {description}
         </Text>
         {/* <div className={styles.button} data-visible={visible}>

@@ -14,6 +14,10 @@ import sprMotionVideo from '~/assets/visual_record.mp4';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
+import { BrandImpact } from './brand-impact';
+import { ClientsShowcase } from './clients-showcase';
+import { PositioningProcess } from './positioning-process';
+import { ProblemStatement } from './problem-statement';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
 import { useEffect, useRef, useState } from 'react';
@@ -51,10 +55,13 @@ export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
+  const problemStatement = useRef();
+  const brandImpact = useRef();
+  const positioningProcess = useRef();
+  const clientsShowcase = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
-
 
   useEffect(() => {
     const sections = [intro, projectOne];
@@ -106,7 +113,7 @@ export const Home = () => {
     {
       title: 'Perfil',
       description: 'Sección de perfil del usuario.',
-      rotation: { x: 0, y: Math.PI, z: 0 },   // rota 180° en Y
+      rotation: { x: 0, y: Math.PI, z: 0 }, // rota 180° en Y
     },
     {
       title: 'Ajustes',
@@ -115,7 +122,6 @@ export const Home = () => {
     },
   ];
 
-
   return (
     <div className={styles.home}>
       <Intro
@@ -123,17 +129,21 @@ export const Home = () => {
         sectionRef={intro}
         scrollIndicatorHidden={scrollIndicatorHidden}
         model={{
-        type: 'laptop',
-        alt: 'Smart Sparrow lesson builder',
-        textures: [
-          {
-            srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
-            placeholder: sprTexturePlaceholder,
-          },
-        ],
-      }}
+          type: 'laptop',
+          alt: 'Smart Sparrow lesson builder',
+          textures: [
+            {
+              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
+              placeholder: sprTexturePlaceholder,
+            },
+          ],
+        }}
       />
-      <ProjectSummary
+      <ProblemStatement id="problem-statement" sectionRef={problemStatement} />
+      <BrandImpact id="brand-impact" sectionRef={brandImpact} />
+      <PositioningProcess id="positioning-process" sectionRef={positioningProcess} />
+      <ClientsShowcase id="clients-showcase" sectionRef={clientsShowcase} />
+      {/* <ProjectSummary
         id="project-1"
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
@@ -155,8 +165,8 @@ export const Home = () => {
             },
           ],
         }}
-      />
-{/* 
+      /> */}
+      {/* 
       <ProjectSummary
         id="project-2"
         alternate
@@ -204,10 +214,10 @@ export const Home = () => {
         }}
         // views={project2Views}
       /> */}
-  
+
       <Footer />
 
-        {/* <CastleView /> */}
+      {/* <CastleView /> */}
     </div>
   );
 };
