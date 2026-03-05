@@ -111,6 +111,7 @@
   background: color-mix(in lab, var(--background) 78%, transparent);
   border: 1px solid color-mix(in lab, var(--text) 14%, transparent);
   backdrop-filter: blur(2px);
+  isolation: isolate;
 }
 
 .graphLine {
@@ -119,6 +120,7 @@
   width: calc(100% - 28px);
   height: calc(100% - 28px);
   color: color-mix(in lab, var(--textTitle) 80%, transparent);
+  z-index: 0;
 }
 
 .path {
@@ -138,15 +140,17 @@
   padding: 0;
   position: absolute;
   inset: 14px;
+  z-index: 2;
 }
 
 .phase {
+  --lift: 12px;
   position: absolute;
   display: flex;
   align-items: center;
   gap: 10px;
   opacity: 0;
-  transform: translate3d(0, 8px, 0);
+  transform: translate3d(0, calc(8px - var(--lift)), 0);
   animation: fadeNode 500ms ease forwards;
   animation-delay: calc(540ms + (var(--i) * 140ms));
 }
@@ -190,6 +194,9 @@
   color: color-mix(in lab, var(--text) 88%, transparent);
   text-transform: lowercase;
   white-space: nowrap;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: color-mix(in lab, var(--background) 86%, transparent);
 }
 
 @keyframes leftImageIn {
@@ -225,7 +232,7 @@
 @keyframes fadeNode {
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, calc(0px - var(--lift)), 0);
   }
 }
 
@@ -281,7 +288,51 @@
     min-height: 312px;
   }
 
+  .graphLine {
+    transform: translateY(20px);
+  }
+
+  .phase {
+    --lift: 22px;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .phase:nth-child(1) {
+    left: 4%;
+    bottom: 7%;
+  }
+
+  .phase:nth-child(2) {
+    left: 14%;
+    bottom: 19%;
+  }
+
+  .phase:nth-child(3) {
+    left: 28%;
+    bottom: 31%;
+  }
+
+  .phase:nth-child(4) {
+    left: 46%;
+    bottom: 44%;
+  }
+
+  .phase:nth-child(5) {
+    left: 64%;
+    bottom: 57%;
+  }
+
+  .phase:nth-child(5) .phaseLabel {
+    order: -1;
+    text-align: right;
+  }
+
   .phaseLabel {
     font-size: 0.86rem;
+    max-width: 94px;
+    white-space: normal;
+    line-height: 1.14;
+    text-shadow: 0 1px 0 color-mix(in lab, var(--background) 90%, transparent);
   }
 }
