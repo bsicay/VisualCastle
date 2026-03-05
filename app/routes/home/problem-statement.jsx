@@ -1,8 +1,10 @@
 import { Section } from '~/components/section';
+import { useTheme } from '~/components/theme-provider';
 import styles from './problem-statement.module.css';
 import katakana from './katakana.svg';
 
 export function ProblemStatement({ id, sectionRef, ...rest }) {
+  const { theme } = useTheme();
   const titleId = `${id}-title`;
 
   return (
@@ -26,9 +28,13 @@ export function ProblemStatement({ id, sectionRef, ...rest }) {
           <p className={styles.supportText}>Eso limita su crecimiento.</p>
         </div>
 
-        <svg className={styles.logo} viewBox="0 0 579 598" aria-hidden>
-          <use href={`${katakana}`} />
-        </svg>
+        <img
+          src={katakana}
+          className={styles.logo}
+          data-light={theme === 'light'}
+          alt=""
+          aria-hidden
+        />
 
         <div className={styles.bottomRight}>
           <h2 className={styles.secondTitle}>¿Por qué existe Visual Castle?</h2>

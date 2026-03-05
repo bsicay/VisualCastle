@@ -21,7 +21,7 @@
   background-image: var(--introImage);
   background-size: cover;
   background-position: center right;
-  opacity: 0.42;
+  opacity: 0.58;
   filter: saturate(0.9) contrast(1.02);
   pointer-events: none;
   z-index: 0;
@@ -76,14 +76,18 @@
 .logoMark {
   width: clamp(64px, 7vw, 102px);
   height: auto;
-  color: var(--textTitle);
   opacity: 0;
   transform: translate3d(0, 14px, 0) scale(0.95);
   transition: opacity 1000ms var(--bezierFastoutSlowin), transform 1000ms var(--bezierFastoutSlowin);
+  filter: brightness(1) contrast(1.05);
 
   &[data-visible='true'] {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  &[data-light='true'] {
+    filter: brightness(0) saturate(100%) contrast(1.1);
   }
 }
 

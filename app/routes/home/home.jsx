@@ -1,28 +1,16 @@
-import gamestackTexture2Large from '~/assets/gamestack-list-large.jpg';
-import gamestackTexture2Placeholder from '~/assets/gamestack-list-placeholder.jpg';
-import gamestackTexture2 from '~/assets/gamestack-list.jpg';
-import gamestackTextureLarge from '~/assets/gamestack-login-large.jpg';
-import gamestackTexturePlaceholder from '~/assets/gamestack-login-placeholder.jpg';
-import gamestackTexture from '~/assets/gamestack-login.jpg';
-import sliceTextureLarge from '~/assets/slice-app-large.jpg';
-import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
-import sliceTexture from '~/assets/slice-app.jpg';
+import { useEffect, useRef, useState } from 'react';
 import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
 import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
-import sprMotionVideo from '~/assets/visual_record.mp4';
 import { Footer } from '~/components/footer';
+import config from '~/config.json';
 import { baseMeta } from '~/utils/meta';
-import { Intro } from './intro';
 import { BrandImpact } from './brand-impact';
 import { ClientsShowcase } from './clients-showcase';
+import styles from './home.module.css';
+import { Intro } from './intro';
 import { PositioningProcess } from './positioning-process';
 import { ProblemStatement } from './problem-statement';
-import { Profile } from './profile';
-import { ProjectSummary } from './project-summary';
-import { useEffect, useRef, useState } from 'react';
-import config from '~/config.json';
-import styles from './home.module.css';
 
 // Prefetch draco decoader wasm
 export const links = () => {
@@ -64,7 +52,9 @@ export const Home = () => {
   const projectThree = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne];
+    const sections = [intro, projectOne]
+      .map(section => section.current)
+      .filter(section => section instanceof Element);
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -72,8 +62,11 @@ export const Home = () => {
           if (entry.isIntersecting) {
             const section = entry.target;
             observer.unobserve(section);
-            if (visibleSections.includes(section)) return;
-            setVisibleSections(prevSections => [...prevSections, section]);
+            setVisibleSections(prevSections =>
+              prevSections.includes(section)
+                ? prevSections
+                : [...prevSections, section]
+            );
           }
         });
       },
@@ -88,16 +81,18 @@ export const Home = () => {
     );
 
     sections.forEach(section => {
-      sectionObserver.observe(section.current);
+      sectionObserver.observe(section);
     });
 
-    indicatorObserver.observe(intro.current);
+    if (intro.current instanceof Element) {
+      indicatorObserver.observe(intro.current);
+    }
 
     return () => {
       sectionObserver.disconnect();
       indicatorObserver.disconnect();
     };
-  }, [visibleSections]);
+  }, []);
 
   const project2Views = [
     {

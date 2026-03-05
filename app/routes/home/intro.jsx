@@ -22,15 +22,15 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
 
   function renderKatakana() {
     return (
-      <svg
+      <img
+        src={katakana}
         aria-hidden
         style={cssProps({ opacity: svgOpacity })}
         className={styles.logoMark}
         data-visible="true"
-        viewBox="0 0 579 598"
-      >
-        <use href={`${katakana}`} />
-      </svg>
+        data-light={theme === 'light'}
+        alt=""
+      />
     );
   }
 

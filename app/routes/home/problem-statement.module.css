@@ -48,9 +48,13 @@
   width: clamp(150px, 12.5vw, 220px);
   height: auto;
   transform: translate(-50%, -50%);
-  fill: var(--textTitle);
+  filter: brightness(1) contrast(1.05);
   animation: logoIn 1.2s var(--bezierFastoutSlowin) both,
     logoBreath 5.8s ease-in-out 1.3s infinite;
+
+  &[data-light='true'] {
+    filter: brightness(0) saturate(100%) contrast(1.1);
+  }
 }
 
 .mainTitle {
