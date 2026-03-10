@@ -5,6 +5,9 @@ import GothamBook from '~/assets/fonts/gotham-book.woff2';
 import GothamMediumItalic from '~/assets/fonts/gotham-medium-italic.woff2';
 import GothamMedium from '~/assets/fonts/gotham-medium.woff2';
 import IPAGothic from '~/assets/fonts/ipa-gothic.woff2';
+import Montserrat400 from '@fontsource/montserrat/files/montserrat-latin-400-normal.woff2';
+import Montserrat500 from '@fontsource/montserrat/files/montserrat-latin-500-normal.woff2';
+import Montserrat700 from '@fontsource/montserrat/files/montserrat-latin-700-normal.woff2';
 import { createContext, useContext } from 'react';
 import { classes, media } from '~/utils/style';
 import { themes, tokens } from './theme';
@@ -116,6 +119,30 @@ const tokenStyles = squish(`
 `);
 
 const fontStyles = squish(`
+  @font-face {
+    font-family: Montserrat;
+    font-weight: 400;
+    src: url(${Montserrat400}) format('woff2');
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Montserrat;
+    font-weight: 500;
+    src: url(${Montserrat500}) format('woff2');
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Montserrat;
+    font-weight: 700;
+    src: url(${Montserrat700}) format('woff2');
+    font-display: swap;
+    font-style: normal;
+  }
+
   @font-face {
     font-family: Gotham;
     font-weight: 400;

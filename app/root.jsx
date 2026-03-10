@@ -10,9 +10,6 @@ import {
   useRouteError,
 } from '@remix-run/react';
 import { createCookieSessionStorage, json } from '@remix-run/cloudflare';
-import '@fontsource/montserrat/400.css';
-import '@fontsource/montserrat/500.css';
-import '@fontsource/montserrat/700.css';
 import { ThemeProvider, themeStyles } from '~/components/theme-provider';
 import { useEffect } from 'react';
 import { Error } from '~/layouts/error';

@@ -7,6 +7,7 @@ import { useScrollToHash } from '~/hooks';
 import { cssProps } from '~/utils/style';
 import styles from './intro.module.css';
 import katakana from './katakana.svg';
+import visualIntroVideo from '~/assets/visualIntro.mp4';
 import introImage from '~/assets/intro.png';
 
 export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
@@ -48,10 +49,22 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
         {({ visible, status }) => (
           <>
             <div
+              className={styles.backgroundIntro}
+              style={{ '--overlay': 0.7 }}
               aria-hidden
-              className={styles.backgroundImage}
-              style={{ '--introImage': `url(${introImage})` }}
-            />
+            >
+              <video
+                className={[styles.backgroundMedia, { '--overlay': 0.9 }]}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster={introImage}
+              >
+                <source src={visualIntroVideo} type="video/mp4" />
+              </video>
+            </div>
 
             <header className={styles.centered} data-visible="true">
               {renderKatakana()}

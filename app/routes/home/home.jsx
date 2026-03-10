@@ -11,8 +11,9 @@ import styles from './home.module.css';
 import { Intro } from './intro';
 import { PositioningProcess } from './positioning-process';
 import { ProblemStatement } from './problem-statement';
+import { ProjectSummary } from './project-summary';
+import sprMotionVideo from '~/assets/visualIntro.mp4';
 
-// Prefetch draco decoader wasm
 export const links = () => {
   return [
     {
@@ -48,8 +49,6 @@ export const Home = () => {
   const positioningProcess = useRef();
   const clientsShowcase = useRef();
   const projectOne = useRef();
-  const projectTwo = useRef();
-  const projectThree = useRef();
 
   useEffect(() => {
     const sections = [intro, projectOne]
@@ -63,9 +62,7 @@ export const Home = () => {
             const section = entry.target;
             observer.unobserve(section);
             setVisibleSections(prevSections =>
-              prevSections.includes(section)
-                ? prevSections
-                : [...prevSections, section]
+              prevSections.includes(section) ? prevSections : [...prevSections, section]
             );
           }
         });
@@ -138,29 +135,7 @@ export const Home = () => {
       <BrandImpact id="brand-impact" sectionRef={brandImpact} />
       <PositioningProcess id="positioning-process" sectionRef={positioningProcess} />
       <ClientsShowcase id="clients-showcase" sectionRef={clientsShowcase} />
-      {/* <ProjectSummary
-        id="project-1"
-        sectionRef={projectOne}
-        visible={visibleSections.includes(projectOne.current)}
-        index={1}
-        title="Sobre nosotros"
-        description="Somos una empresa comprometida en desarrollar todas las estrategias visuales, para empresas y profesionales en cada una de las especializaciones, con la finalidad de que puedan dar a conocer sus productos o servicios al máximo número de usuarios."
-        buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
-        backgroundVideo={sprMotionVideo}
-        backgroundPoster={sprTexturePlaceholder}
-        backgroundOpacity={0.70}
-        model={{
-          type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
-          textures: [
-            {
-              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
-              placeholder: sprTexturePlaceholder,
-            },
-          ],
-        }}
-      /> */}
+
       {/* 
       <ProjectSummary
         id="project-2"
