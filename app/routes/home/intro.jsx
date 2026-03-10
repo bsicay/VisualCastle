@@ -54,7 +54,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
               aria-hidden
             >
               <video
-                className={[styles.backgroundMedia, { '--overlay': 0.9 }]}
+                className={styles.backgroundMedia}
                 autoPlay
                 loop
                 muted

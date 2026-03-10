@@ -15,7 +15,7 @@
   }
 
   :global(html, body) {
-    font-family: var(--fontStack);
+    font-family: 'Montserrat', var(--fontStack);
     font-weight: var(--fontWeightRegular);
     background-color: var(--background);
     transition: var(--durationM) ease;
@@ -28,6 +28,10 @@
     &:focus {
       outline: none;
     }
+  }
+
+  :global(*) {
+    font-family: inherit;
   }
 
   :global(:where(code, pre)) {
