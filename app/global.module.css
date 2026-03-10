@@ -34,6 +34,10 @@
     font-family: inherit;
   }
 
+  :global(:where(h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea, select)) {
+    font-family: 'Montserrat', var(--systemFontStack) !important;
+  }
+
   :global(:where(code, pre)) {
     font-family: var(--monoFontStack);
   }
