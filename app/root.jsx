@@ -21,6 +21,33 @@ import styles from './root.module.css';
 import './reset.module.css';
 import './global.module.css';
 
+const montserratInlineStyles = `
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-400-normal.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-500-normal.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-700-normal.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  html, body, h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea, select {
+    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  }
+`;
+
 export const links = () => [
   { rel: 'manifest', href: '/manifest.json' },
   { rel: 'icon', href: '/favicon.ico' },
@@ -98,6 +125,7 @@ export default function App() {
         ></script>
 
         <style dangerouslySetInnerHTML={{ __html: themeStyles }} />
+        <style dangerouslySetInnerHTML={{ __html: montserratInlineStyles }} />
         <Meta />
         <Links />
         <link rel="canonical" href={canonicalUrl} />
@@ -141,6 +169,7 @@ export function ErrorBoundary() {
         ></script>
 
         <style dangerouslySetInnerHTML={{ __html: themeStyles }} />
+        <style dangerouslySetInnerHTML={{ __html: montserratInlineStyles }} />
         <Meta />
         <Links />
       </head>
