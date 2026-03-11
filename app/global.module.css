@@ -10,12 +10,45 @@
 @custom-media --mediaNoTouch (pointer: fine);
 
 @layer base {
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-400-normal.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-500-normal.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat-latin-700-normal.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :global(:root) {
     --mobileNavOffset: calc(var(--spaceOuter) * 2 + var(--space2XL));
   }
 
   :global(html, body) {
-    font-family: 'Montserrat', var(--fontStack);
+    font-family:
+      'Montserrat',
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
     font-weight: var(--fontWeightRegular);
     background-color: var(--background);
     transition: var(--durationM) ease;
@@ -35,7 +68,16 @@
   }
 
   :global(:where(h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea, select)) {
-    font-family: 'Montserrat', var(--systemFontStack) !important;
+    font-family:
+      'Montserrat',
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif !important;
   }
 
   :global(:where(code, pre)) {

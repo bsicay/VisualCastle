@@ -22,12 +22,6 @@ import './reset.module.css';
 import './global.module.css';
 
 export const links = () => [
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: '' },
-  {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap',
-  },
   { rel: 'manifest', href: '/manifest.json' },
   { rel: 'icon', href: '/favicon.ico' },
   { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
@@ -84,10 +78,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    console.info(
-      `${config.ascii}\n`,
-      `Taking a peek huh? Check out the source code: ${config.repo}\n\n`
-    );
+    console.info(`Visual Castle\n\n`);
   }, []);
 
   return (
@@ -101,7 +92,10 @@ export default function App() {
           name="color-scheme"
           content={theme === 'light' ? 'light dark' : 'dark light'}
         />
-        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        <script
+          type="module"
+          src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+        ></script>
 
         <style dangerouslySetInnerHTML={{ __html: themeStyles }} />
         <Meta />
@@ -141,7 +135,10 @@ export function ErrorBoundary() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#111" />
         <meta name="color-scheme" content="dark light" />
-        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        <script
+          type="module"
+          src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+        ></script>
 
         <style dangerouslySetInnerHTML={{ __html: themeStyles }} />
         <Meta />
