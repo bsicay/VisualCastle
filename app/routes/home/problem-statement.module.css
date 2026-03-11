@@ -161,7 +161,8 @@
 @media (--mediaMobile) {
   .wrapper {
     min-height: auto;
-    padding-top: var(--space3XL);
+    margin-top: calc(var(--spaceXL) * -1);
+    padding-top: var(--spaceL);
     padding-bottom: var(--space3XL);
   }
 
