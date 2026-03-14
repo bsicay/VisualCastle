@@ -8,9 +8,9 @@
   overflow: hidden;
 
   @media (--mediaMobile) {
-    height: 50vh;
+    height: calc(50vh + var(--mobileNavOffset));
     min-height: 280px;
-    padding-top: 0;
+    padding-top: var(--mobileNavOffset);
     align-items: flex-start;
   }
 }
@@ -253,7 +253,7 @@
 
 @media (--mediaMobile) {
   .backgroundIntro {
-    inset: 0;
+    inset: var(--mobileNavOffset) 0 0;
     width: 100%;
     left: 0;
     transform: none;
@@ -279,7 +279,7 @@
   .centered {
     width: min(100%, 680px);
     padding-inline: 8px;
-    padding-top: var(--space2XL);
+    padding-top: calc(var(--spaceL) + var(--spaceXS));
   }
 
   .message {
