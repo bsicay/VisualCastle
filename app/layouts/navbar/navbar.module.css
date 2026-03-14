@@ -48,7 +48,7 @@
   .nav {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     flex: 1 1 auto;
     max-width: var(--space2XL);
