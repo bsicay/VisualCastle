@@ -162,7 +162,7 @@
   .wrapper {
     min-height: auto;
     margin-top: 0;
-    padding-top: var(--space2XL);
+    padding-top: calc(var(--space3XL) + var(--spaceM));
     padding-bottom: var(--space3XL);
   }
 

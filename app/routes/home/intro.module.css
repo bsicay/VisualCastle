@@ -253,20 +253,23 @@
 
 @media (--mediaMobile) {
   .backgroundIntro {
+    inset: var(--mobileNavOffset) 0 0;
+    width: 100%;
+    left: 0;
+    transform: none;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     background: #000;
-    padding-top: var(--mobileNavOffset);
   }
 
   .backgroundIntro .backgroundMedia {
     width: 100%;
-    height: calc(100% - var(--mobileNavOffset));
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     object-position: center top;
-    transform: scale(1.2);
-    margin-top: var(--mobileNavOffset);
+    transform: scale(1);
+    margin-top: 0;
   }
 
   .backgroundIntro::after {
