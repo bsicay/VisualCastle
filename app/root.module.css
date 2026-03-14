@@ -4,6 +4,10 @@
     position: relative;
     transition: opacity 0.4s var(--bezierFastoutSlowin);
 
+    @media (--mediaMobile), (--mediaMobileLS) {
+      padding-top: var(--mobileNavOffset);
+    }
+
     &[data-loading='true'] {
       opacity: 0;
     }

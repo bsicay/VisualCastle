@@ -8,9 +8,8 @@
   overflow: hidden;
 
   @media (--mediaMobile) {
-    height: calc(50vh - var(--mobileNavOffset));
+    height: 50vh;
     min-height: 280px;
-    margin-top: var(--mobileNavOffset);
     padding-top: 0;
     align-items: flex-start;
   }
