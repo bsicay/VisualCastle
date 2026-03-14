@@ -22,6 +22,24 @@
     @media (--mediaMobile), (--mediaMobileLS) {
       bottom: auto;
     }
+
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @media (--mediaMobile), (--mediaMobileLS) {
+      &::before {
+        height: calc(var(--mobileNavOffset) + var(--spaceS));
+        background: linear-gradient(180deg, rgb(17 17 17 / 1) 0%, rgb(17 17 17 / 0.96) 72%, rgb(17 17 17 / 0) 100%);
+      }
+    }
   }
 
   .logo {
