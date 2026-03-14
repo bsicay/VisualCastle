@@ -24,6 +24,34 @@ export const Navbar = () => {
   const scrollToHash = useScrollToHash();
 
   useEffect(() => {
+    const root = document.documentElement;
+
+    const syncNavbarOffset = () => {
+      if (!headerRef.current || !isMobile) {
+        root.style.removeProperty('--runtimeMobileNavOffset');
+        return;
+      }
+
+      const headerRect = headerRef.current.getBoundingClientRect();
+      const toggle = document.querySelector('[aria-label="Menu"]');
+      const toggleRect =
+        toggle instanceof Element ? toggle.getBoundingClientRect() : { bottom: 0 };
+      const offset = Math.ceil(Math.max(headerRect.bottom, toggleRect.bottom) + 8);
+
+      root.style.setProperty('--runtimeMobileNavOffset', `${offset}px`);
+    };
+
+    syncNavbarOffset();
+    window.addEventListener('resize', syncNavbarOffset);
+    window.addEventListener('orientationchange', syncNavbarOffset);
+
+    return () => {
+      window.removeEventListener('resize', syncNavbarOffset);
+      window.removeEventListener('orientationchange', syncNavbarOffset);
+    };
+  }, [isMobile, menuOpen, windowSize]);
+
+  useEffect(() => {
     // Prevent ssr mismatch by storing this in state
     setCurrent(`${location.pathname}${location.hash}`);
   }, [location]);
