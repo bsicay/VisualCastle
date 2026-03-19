@@ -4,7 +4,7 @@
     position: relative;
     transition: opacity 0.4s var(--bezierFastoutSlowin);
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (--mediaMobile) {
       padding-top: var(--runtimeMobileNavOffset, var(--mobileNavOffset));
     }
 

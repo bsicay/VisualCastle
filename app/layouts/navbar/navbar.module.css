@@ -19,7 +19,7 @@
       --headerNavFontSize: calc((22 / 16) * 1rem);
     }
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (--mediaMobile) {
       top: 0;
       left: 0;
       right: 0;
@@ -54,7 +54,7 @@
     max-width: var(--space2XL);
     z-index: 1;
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (--mediaMobile) {
       display: none;
     }
   }
@@ -118,7 +118,7 @@
     position: relative;
     z-index: 1;
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (--mediaMobile) {
       flex-direction: row;
       position: absolute;
       bottom: var(--spaceXL);
@@ -172,7 +172,7 @@
     -webkit-backdrop-filter: var(--backdrop);
     backdrop-filter: var(--backdrop);
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (--mediaMobile) {
       display: flex;
     }
 
