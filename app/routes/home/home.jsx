@@ -30,7 +30,7 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'Digital solutions',
+    title: 'Digital Solutions',
     description: ``,
   });
 };
