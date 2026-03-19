@@ -30,8 +30,8 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'Designer + Developer',
-    description: `Design portfolio of ${config.name} — a product designer working on web & mobile apps with a focus on motion, experience design, and accessibility.`,
+    title: 'Digital solutions',
+    description: ``,
   });
 };
 
@@ -62,7 +62,11 @@ export const Home = () => {
 
   return (
     <div className={styles.home}>
-      <Intro id="intro" sectionRef={intro} scrollIndicatorHidden={scrollIndicatorHidden} />
+      <Intro
+        id="intro"
+        sectionRef={intro}
+        scrollIndicatorHidden={scrollIndicatorHidden}
+      />
       <ProblemStatement id="problem-statement" sectionRef={problemStatement} />
       <BrandImpact id="brand-impact" sectionRef={brandImpact} />
       <PositioningProcess id="positioning-process" sectionRef={positioningProcess} />
